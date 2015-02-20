@@ -35,7 +35,7 @@ $(document).ready(function() {
    */
   $('.clear-btn').click(function(){
     $content.val('');
-    $content.focus();
+    $('.clear-btn').blur();
     updateWordsCount();
   });
 
@@ -57,7 +57,7 @@ $(document).ready(function() {
    * 3. Call the methods to display the results
    */
   $('.analysis-btn').click(function(){
-    $content.focus();
+    $('.analysis-btn').blur();
     $loading.show();
     $error.hide();
     $traits.hide();
