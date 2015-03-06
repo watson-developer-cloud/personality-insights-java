@@ -5,8 +5,8 @@
 	<property environment="env" />
 	<property name="srcDir" value="." />
 	<property name="debuglevel" value="source,lines,vars" />
-	<property name="target" value="1.7" />
-	<property name="source" value="1.7" />
+	<property name="target" value="1.6" />
+	<property name="source" value="1.6" />
 	<property name="ARCHIVE_DIR" value="output" />
 	<property name="LIB_DIR" value="./lib" />
 	<property name="WEB_INF_LIB_DIR" value="./WebContent/WEB-INF/lib" />
@@ -31,6 +31,9 @@
 	<target name="build" depends="build-project,build-war" />
 	<target name="cleanall" depends="clean" />
 	<target name="build-project" depends="clean,init">
+		<copy todir="${ARCHIVE_DIR}">
+		  <fileset file="manifest.yml" />
+		</copy>
 		<echo message="${ant.project.name}: ${ant.file}" />
 		<javac debug="true" debuglevel="${debuglevel}" destdir="build/bin" source="${source}" target="${target}" includeantruntime="false">
 			<src path="src" />
@@ -47,7 +50,6 @@
 			</fileset>
 			<lib dir="WebContent/WEB-INF/lib" />
 			<classes dir="build/bin" />
-			<classes dir="src/com/ibm/cloudoe/samples" includes="mobydick.txt" prefix="WEB-INF/classes/com/ibm/cloudoe/samples"/>
 		</war>
 	</target>
 
