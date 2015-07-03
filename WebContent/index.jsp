@@ -1,10 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<c:set var="language" value="${not empty param.language ? param.language : not empty language ? language : pageContext.request.locale}" scope="session" />
+<fmt:setLocale value="${language}" />
+<fmt:setBundle basename="com.ibm.cloudoe.samples.i18n.messages" />
 <!DOCTYPE html>
-<html lang="en">
+<html lang="${language}">
 <head>
-<title>Personality Insights</title>
+<title><fmt:message key="application.title" /></title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,6 +16,9 @@
 <link rel="icon" href="images/favicon.ico" type="image/x-icon">
 <link rel="stylesheet" href="css/watson-bootstrap-dark.css">
 <link rel="stylesheet" href="css/style.css">
+<script type="text/javascript">
+    console.log("Your locale is ${language}");
+</script>
 </head>
 <body>
 <div class="container">
@@ -20,12 +27,12 @@
 		<div class="row top-nav">
 			<div class="col-lg-12">
 				<a href="http://www.ibm.com/smarterplanet/us/en/ibmwatson/developercloud/personality-insights.html"
-					class="left">Learn more about this service</a>
+					class="left"><fmt:message key="application.label.learnmore" /></a>
 				<a href="https://github.com/watson-developer-cloud/personality-insights-java"
-					class="right fork">Fork</a>
+					class="right fork"><fmt:message key="application.label.fork"/></a>
 				<a href="mailto:watsondevelopercloud@wwpdl.vnet.ibm.com"
-					class="right">Contact Us</a>
-				<a href="https://developer.ibm.com/answers" class="right">Watson Community</a>
+					class="right"><fmt:message key="application.label.contactus"/></a>
+				<a href="https://developer.ibm.com/answers" class="right"><fmt:message key="application.label.watsoncommunity"/></a>
 			</div>
 		</div>
 		<div style="padding-bottom: 0px;" class="row header">
@@ -33,19 +40,16 @@
 			<img src="images/app.png">
 		</div>
 		<div class="col-lg-6 col-xs-6">
-			<h2>Personality Insights Java Starter Application</h2>
-			<p>The Watson Personality Insights service uses linguistic
-				analytics to extract a spectrum of cognitive and social
-				characteristics from the text data that a person generates
-				through text messages, tweets, posts, and more.</p>
+			<h2><fmt:message key="application.name" /></h2>
+			<p><fmt:message key="application.service.description"/></p>
 		</div>
 		<div class="col-lg-4 col-xs-4">
-			<h3>Keep Exploring:</h3>
+			<h3><fmt:message key="application.label.keepexploring"/>:</h3>
 			<a
 				href="http://www.ibm.com/smarterplanet/us/en/ibmwatson/developercloud/doc/personality-insights/"
-				class="left">Documentation</a><a
+				class="left"><fmt:message key="application.label.documentation"/></a><a
 				href="http://www.ibm.com/smarterplanet/us/en/ibmwatson/developercloud/apis/#!/personality-insights"
-				class="right">API Details</a>
+				class="right"><fmt:message key="application.label.apidetails"/></a>
 		</div>
 	</div>
 </div>
@@ -56,9 +60,10 @@
 	<div class="well">
 		<div class="form-group row">
 			<div class="col-lg-12 col-xs-12">
+                <fmt:message key="application.inputeditor.placeholder" var="textEditorPlaceHolder" />
 				<textarea rows="8" required
-					placeholder="Please enter the text to analyze (minimum of 100 words)..."
-					class="content form-control">${content}</textarea>
+					placeholder="${textEditorPlaceHolder}"
+					class="content form-control"><fmt:message key="application.inputeditor.content" /></textarea>
 				<div class="text-right">
 					<span class="wordsCount small"></span>
 				</div>
@@ -66,10 +71,10 @@
 		</div>
 		<div class="form-group row">
 			<div class="col-lg-4 col-lg-push-4 col-xs-4">
-				<button type="button" class="btn btn-block clear-btn">Clear</button>
+				<button type="button" class="btn btn-block clear-btn"><fmt:message key="application.inputeditor.clear" /></button>
 			</div>
 			<div class="col-lg-4 col-lg-push-4 col-xs-4 col-xs-push-4">
-				<button type="button" class="btn btn-block analysis-btn">Analyze</button>
+				<button type="button" class="btn btn-block analysis-btn"><fmt:message key="application.inputeditor.analyze" /></button>
 			</div>
 		</div>
 	</div>
@@ -88,11 +93,11 @@
 		</div>
 	</div>
 	<div style="display: none;" class="results">
-		<h3 style="height: 29px;">Your Personality*</h3>
+		<h3 style="height: 29px;"><fmt:message key="application.label.yourpersonality"/></h3>
 		<div class="well">
 			<div class="summary-div"></div>
 			<div style="color: gray" class="text-right">
-				<em class="small">*Compared to most people who participated in our surveys.</em>
+				<em class="small"><fmt:message key="application.label.comparedfootnote"/></em>
 			</div>
 		</div>
 	</div>
@@ -100,11 +105,11 @@
 <div style="display: none;" class="results">
 	<div class="row">
 		<div class="col-lg-5 col-md-5 col-xs-12">
-			<h3>Data Behind Your Personality</h3>
+			<h3><fmt:message key="application.label.personalitydata"/></h3>
 			<div style="display: none;" class="col540px well traits"></div>
 			</div>
 			<div class="col-lg-7 col-xs-12 col-md-7">
-				<h3>Visualization of Personality Data</h3>
+				<h3><fmt:message key="application.label.personalityvisualizationdata"/></h3>
 				<div id="vizcontainer" class="well"></div>
 			</div>
 		</div>
@@ -113,10 +118,10 @@
 		<div id="header-template">
 			<div class="row theader">
 				<div class="col-lg-5 col-xs-5">
-					<span>Name</span>
+					<span><fmt:message key="application.label.name"/></span>
 				</div>
 				<div class="col-lg-7 col-xs-7 text-right">
-					<span>Value ± Sampling Error</span>
+					<span><fmt:message key="application.label.value"/> ± <fmt:message key="application.label.samplingerror"/></span>
 				</div>
 			</div>
 		</div>
