@@ -21,6 +21,7 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -58,8 +59,6 @@ public class DemoServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-
-		req.setAttribute("content", getDefaultText());
 		req.getRequestDispatcher("/index.jsp").forward(req, resp);
 	}
 
@@ -84,11 +83,15 @@ public class DemoServlet extends HttpServlet {
 		// create the request
 		String text = req.getParameter("text");
 
+		Locale locale = req.getLocale();
+		
 		try {
 			URI profileURI = new URI(baseURL + "/v2/profile").normalize();
 
 			Request profileRequest = Request.Post(profileURI)
 					.addHeader("Accept", "application/json")
+					.addHeader("Accept-Language", locale.toString())
+					.addHeader("Content-Language", locale.toString())
 					.bodyString(text, ContentType.TEXT_PLAIN);
 
 			Executor executor = Executor.newInstance().auth(username, password);
