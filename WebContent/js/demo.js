@@ -24,6 +24,7 @@ $(document).ready(function() {
 
   // Jquery variables
   var $content = $('.content'),
+    $contentLocale = $('.contentLocale'),
     $loading = $('.loading'),
     $error = $('.error'),
     $errorMsg = $('.errorMsg'),
@@ -66,7 +67,8 @@ $(document).ready(function() {
     $.ajax({
       type: 'POST',
       data: {
-        text: $content.val()
+        text: $content.val(),
+        textLocale: $contentLocale.val() 
       },
       url: 'demo',
       dataType: 'json',

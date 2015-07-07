@@ -80,18 +80,19 @@ public class DemoServlet extends HttpServlet {
 		logger.info("doPost");
 
 		req.setCharacterEncoding("UTF-8");
+		
 		// create the request
 		String text = req.getParameter("text");
-
-		Locale locale = req.getLocale();
+		String textLocale = req.getParameter("textLocale");
+		String locale = req.getLocale().toString().replace("_", "-");
 		
 		try {
 			URI profileURI = new URI(baseURL + "/v2/profile").normalize();
-
+			
 			Request profileRequest = Request.Post(profileURI)
 					.addHeader("Accept", "application/json")
-					.addHeader("Accept-Language", locale.toString())
-					.addHeader("Content-Language", locale.toString())
+					.addHeader("Accept-Language", locale)
+					.addHeader("Content-Language", textLocale)
 					.bodyString(text, ContentType.TEXT_PLAIN);
 
 			Executor executor = Executor.newInstance().auth(username, password);

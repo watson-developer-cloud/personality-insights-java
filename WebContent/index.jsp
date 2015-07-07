@@ -56,14 +56,16 @@
 </div>
 <div class="row">
 <div class="col-lg-6 col-md-6 col-xs-12">
-	<h2>Try the service</h2>
+	<h2><fmt:message key="application.label.trytheservice" /></h2>
 	<div class="well">
 		<div class="form-group row">
 			<div class="col-lg-12 col-xs-12">
-                <fmt:message key="application.inputeditor.placeholder" var="textEditorPlaceHolder" />
+                <fmt:message key="application.input.placeholder" var="textEditorPlaceHolder" />
 				<textarea rows="8" required
 					placeholder="${textEditorPlaceHolder}"
-					class="content form-control"><fmt:message key="application.inputeditor.content" /></textarea>
+					class="content form-control"><fmt:message key="application.input.content" /></textarea>
+                <fmt:message key="application.input.locale" var="inputLocale" />
+                <input hidden="hidden" value="${inputLocale}" class="contentLocale"/>
 				<div class="text-right">
 					<span class="wordsCount small"></span>
 				</div>
@@ -71,10 +73,10 @@
 		</div>
 		<div class="form-group row">
 			<div class="col-lg-4 col-lg-push-4 col-xs-4">
-				<button type="button" class="btn btn-block clear-btn"><fmt:message key="application.inputeditor.clear" /></button>
+				<button type="button" class="btn btn-block clear-btn"><fmt:message key="application.input.clear" /></button>
 			</div>
 			<div class="col-lg-4 col-lg-push-4 col-xs-4 col-xs-push-4">
-				<button type="button" class="btn btn-block analysis-btn"><fmt:message key="application.inputeditor.analyze" /></button>
+				<button type="button" class="btn btn-block analysis-btn"><fmt:message key="application.input.analyze" /></button>
 			</div>
 		</div>
 	</div>
