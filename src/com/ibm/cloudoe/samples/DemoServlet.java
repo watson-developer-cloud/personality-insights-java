@@ -1,4 +1,4 @@
-/* Copyright IBM Corp. 2014
+/* Copyright IBM Corp. 2015
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,11 +17,6 @@ package com.ibm.cloudoe.samples;
 
 import java.io.IOException;
 import java.net.URI;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -49,7 +44,7 @@ public class DemoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	private String serviceName = "personality_insights";
-	private String mobydickcp1;
+
 	// If running locally complete the variables below
 	// with the information in VCAP_SERVICES
 	private String baseURL = "<url>";
@@ -83,16 +78,15 @@ public class DemoServlet extends HttpServlet {
 		
 		// create the request
 		String text = req.getParameter("text");
-		String textLocale = req.getParameter("textLocale");
-		String locale = req.getLocale().toString().replace("_", "-");
+		String language = req.getParameter("language");
 		
 		try {
 			URI profileURI = new URI(baseURL + "/v2/profile").normalize();
 			
 			Request profileRequest = Request.Post(profileURI)
 					.addHeader("Accept", "application/json")
-					.addHeader("Accept-Language", locale)
-					.addHeader("Content-Language", textLocale)
+					.addHeader("Accept-Language", language)
+					.addHeader("Content-Language", language)
 					.bodyString(text, ContentType.TEXT_PLAIN);
 
 			Executor executor = Executor.newInstance().auth(username, password);
@@ -169,18 +163,4 @@ public class DemoServlet extends HttpServlet {
 		return sysEnv;
 	}
 
-	private String getDefaultText() {
-		if (mobydickcp1 == null) {
-			byte[] encoded;
-			try {
-				Path path = Paths.get(this.getClass().getResource("mobydick.txt").toURI());
-				encoded = Files.readAllBytes(path);
-				mobydickcp1 =  new String(encoded, StandardCharsets.UTF_8);
-				System.out.println(mobydickcp1);
-			} catch (Exception e) {
-				logger.log(Level.SEVERE, "mobidick.txt file not found: " + e.getMessage(), e);
-			}
-		}
-		return mobydickcp1;
-	}
 }

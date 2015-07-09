@@ -20,7 +20,7 @@ Give it a try! Click the button below to fork into IBM DevOps Services and deplo
   ```none
   applications:
   - services:
-    - personality-insights-service
+    - personality-insights-service-standard
     name: <application-name>
     path: output/webApp.war
     memory: 512M
@@ -39,7 +39,7 @@ Give it a try! Click the button below to fork into IBM DevOps Services and deplo
 5. Create the Personality Insights service in Bluemix.
 
   ```sh
-  $ cf create-service personality_insights standard personality-insights-service
+  $ cf create-service personality_insights standard personality-insights-service-standard
   ```
 
 6. Download and install the [ant][ant] compiler.
@@ -67,7 +67,7 @@ Give it a try! Click the button below to fork into IBM DevOps Services and deplo
   The application uses the WebSphere Liberty profile runtime as its server,
   so you need to download and install the profile as part of the steps below.
 
-1. Copy the credentials from your `personality-insights-service` service in Bluemix to
+1. Copy the credentials from your `personality-insights-service-standard` service in Bluemix to
    `DemoServlet.java`. You can use the following command to see the
    credentials:
 
@@ -88,7 +88,7 @@ Give it a try! Click the button below to fork into IBM DevOps Services and deplo
             "username": "<username>"
           },
         "label": "personality-insights",
-        "name": "personality-insights-service",
+        "name": "personality-insights-service-standard",
         "plan": "IBM Watson Personality Insights Monthly Plan"
      }]
     }
@@ -119,7 +119,8 @@ Give it a try! Click the button below to fork into IBM DevOps Services and deplo
 
 ## License
 
-  This sample code is licensed under Apache 2.0. Full license text is available in [LICENSE](LICENSE).
+  This sample code is licensed under Apache 2.0. Full license text is available in [LICENSE](LICENSE).  
+  This sample code is using jQuery and d3, both are using MIT license
 
 ## Contributing
 
