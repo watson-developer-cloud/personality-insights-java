@@ -85,7 +85,6 @@ public class DemoServlet extends HttpServlet {
 			
 			Request profileRequest = Request.Post(profileURI)
 					.addHeader("Accept", "application/json")
-					.addHeader("Accept-Language", language)
 					.addHeader("Content-Language", language)
 					.bodyString(text, ContentType.TEXT_PLAIN);
 
