@@ -108,6 +108,42 @@ Give it a try! Click the button below to fork into IBM DevOps Services and deplo
 
 6. Go to `http://localhost:9080/app/` to see the running application.
 
+## i18n Support
+
+  The application has i18n support and is available in English and 
+  Spanish. The language is automatically selected from the browser's
+  locale.
+  
+  To add a new translation follow the steps below:
+  
+  1. Translating the static text:
+  	1. Locate the `messages.properties` file present in the 
+  	   `src/com/ibm/cloudoe/samples/i18n` directory. This file
+           includes all the messages and labels in English.
+  	1. Copy `messages.properties` and name the new file with the 
+  	   format `messages_ll_CC.properties` or `messages_ll.properties`, 
+           where `ll` is the language code and `CC` is the country code. For 
+           example, a new translation for argentinian Spanish would be named 
+           after `messages_es_AR.properties`. You may omit the country code 
+           to make the translation global for the language.
+	1. Translate each English string to the desired language and save it.
+  1. Translating the personality summary:
+  	1. Locate the JSON files present in `WebContent/json/` directory.
+  	   These are:
+	     * `facets.json`
+	     * `needs.json`
+	     * `summary.json`
+	     * `traits.json`
+	     * `values.json`
+	1. Copy each file and name it with the format `<filename>_ll-CC.json`
+	   or `<filename>_ll-CC.json`. For example, a Portuguese language
+           translations for `facets.json` will result in a new file named 
+           `facets_pt.json`, an UK English translation for `traits.json` will
+           result in a new file named `traits_en-UK.json`.
+	1. Translate all the strings present in the new files to the desired
+	   language and save them.
+  
+
 ## Troubleshooting
 
   To troubleshoot your Bluemix application, the most useful source of
