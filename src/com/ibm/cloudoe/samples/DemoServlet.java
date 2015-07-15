@@ -79,6 +79,7 @@ public class DemoServlet extends HttpServlet {
 		// create the request
 		String text = req.getParameter("text");
 		String language = req.getParameter("language");
+		String locale = req.getLocale().toString().replace("_", "-");
 		
 		try {
 			URI profileURI = new URI(baseURL + "/v2/profile").normalize();
@@ -86,6 +87,7 @@ public class DemoServlet extends HttpServlet {
 			Request profileRequest = Request.Post(profileURI)
 					.addHeader("Accept", "application/json")
 					.addHeader("Content-Language", language)
+					.addHeader("Accept-Language", locale)
 					.bodyString(text, ContentType.TEXT_PLAIN);
 
 			Executor executor = Executor.newInstance().auth(username, password);
