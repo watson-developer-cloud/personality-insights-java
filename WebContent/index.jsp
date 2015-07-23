@@ -151,7 +151,7 @@
 							<span><fmt:message key="application.label.name"/></span>
 						</div>
 						<div class="col-lg-7 col-xs-7 text-right">
-							<span><fmt:message key="application.label.value"/> ± <fmt:message key="application.label.samplingError"/></span>
+							<span><fmt:message key="application.label.value"/></span>
 						</div>
 					</div>
 				</div>
