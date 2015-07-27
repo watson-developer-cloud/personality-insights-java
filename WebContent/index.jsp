@@ -93,6 +93,10 @@
 							<div class="text-right inputFootnote">
 								<span class="wordsCount"></span> <span class="small"></span><fmt:message key="application.label.words"/></span>
 							</div>
+							<ul class="inputWarnings">
+								<li class="warning recommendedWordsWarning"><fmt:message key="application.warning.minimumRecommendedWarning"/></li>								
+								<li class="warning selfReflectiveTextWarning"><fmt:message key="application.warning.selfReflectiveText"/></li>
+							</ul>
 						</div>
 					</div>
 					<div style="display: none; margin-bottom: 10px;"
@@ -128,6 +132,9 @@
 						<div class="summary-div"></div>
 						<div style="color: gray" class="text-right">
 							<em class="small">*<fmt:message key="application.label.comparedFootnote"/></em>
+						</div>
+						<div class="warning text-right">
+							<em class="small outputWarningFootnote"></em>
 						</div>
 					</div>
 				</div>

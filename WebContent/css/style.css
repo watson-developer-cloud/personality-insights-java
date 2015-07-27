@@ -10,6 +10,24 @@
   margin-bottom: 0px;
 }
 
+.inputWarnings {
+	font-size: 10pt;	
+	list-style: none;
+	padding-left: 0px;
+	padding-top: 4px;
+	margin-bottom: 0px;
+	text-align: justify;
+}
+
+.warning {
+	color: #B5B04A;
+}
+
+.inputWarnings li:before {
+    content: "■ ";
+}
+
+
 .wordsCount {
   padding-bottom: 5px;
 }
