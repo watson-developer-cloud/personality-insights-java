@@ -14,9 +14,14 @@
 	font-size: 10pt;	
 	list-style: none;
 	padding-left: 0px;
-	padding-top: 4px;
-	margin-bottom: 0px;
+	padding-top: 10px;
+	margin-bottom: 4px;
 	text-align: justify;
+}
+
+.inputWarnings li {
+	padding-top: 4px;
+	padding-bottom: 4px;
 }
 
 .warning {
