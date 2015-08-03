@@ -73,6 +73,8 @@
 		<div class="row">
 			<div class="col-lg-6 col-md-12 col-xs-12">
 				<h2><fmt:message key="application.input.title"/></h2>
+				<p><fmt:message key="application.warning.minimumRecommendedWarning"/></p>                               
+                <p><fmt:message key="application.warning.selfReflectiveText"/></p>
 				<div class="well">
 					<div class="form-group row">
 						<div style="padding: 0px;" class="col-lg-12 col-xs-12">
@@ -93,8 +95,6 @@
 							<div class="text-right inputFootnote">
 								<span class="wordsCount"></span> <span class="small"></span><fmt:message key="application.label.words"/></span>
 							</div>
-							<p><fmt:message key="application.warning.minimumRecommendedWarning"/></p>								
-							<p><fmt:message key="application.warning.selfReflectiveText"/></p>
 						</div>
 					</div>
 					<div style="display: none; margin-bottom: 10px;"
