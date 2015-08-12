@@ -73,6 +73,8 @@
 		<div class="row">
 			<div class="col-lg-6 col-md-12 col-xs-12">
 				<h2><fmt:message key="application.input.title"/></h2>
+				<p><fmt:message key="application.warning.minimumRecommendedWarning"/></p>                               
+                <p><fmt:message key="application.warning.selfReflectiveText"/></p>
 				<div class="well">
 					<div class="form-group row">
 						<div style="padding: 0px;" class="col-lg-12 col-xs-12">
@@ -128,6 +130,9 @@
 						<div class="summary-div"></div>
 						<div style="color: gray" class="text-right">
 							<em class="small">*<fmt:message key="application.label.comparedFootnote"/></em>
+						</div>
+						<div style="color: gray" class="text-right">
+							<em class="small outputWordCountMessage"></em>
 						</div>
 					</div>
 				</div>
