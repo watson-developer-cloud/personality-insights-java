@@ -95,7 +95,7 @@ Give it a try! Click the button below to fork into IBM DevOps Services and deplo
     }
     ```
 
-		You need to copy the `username`, `password`, and `url`.
+	You need to copy the `username`, `password`, and `url`.
 
 2. Install the [Liberty profile runtime][liberty] (for Mac OSX, check this
    [guide][liberty_mac]).
