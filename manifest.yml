@@ -7,5 +7,5 @@ applications:
 - services:
   - personality-insights-service-standard
   name: personality-insights-java
-  path: output/webApp.war
+  path: webApp.war
   memory: 512M
