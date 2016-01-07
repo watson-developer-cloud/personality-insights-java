@@ -20,9 +20,9 @@ Give it a try! Click the button below to fork into IBM DevOps Services and deplo
   ```none
   applications:
   - services:
-    - personality-insights-service-standard
+    - personality-insights-service
     name: <application-name>
-    path: output/webApp.war
+    path: webApp.war
     memory: 512M
   ```
 
@@ -39,7 +39,7 @@ Give it a try! Click the button below to fork into IBM DevOps Services and deplo
 5. Create the Personality Insights service in Bluemix.
 
   ```sh
-  $ cf create-service personality_insights tiered personality-insights-service-standard
+  $ cf create-service personality_insights tiered personality-insights-service
   ```
 
 6. Download and install the [ant][ant] compiler.
@@ -56,18 +56,15 @@ Give it a try! Click the button below to fork into IBM DevOps Services and deplo
 
 8. Push it live!
   ```sh
-  $ cf push
+  $ cf push -p output/webApp.war
   ```
-
-   See the full [Getting Started][getting_started] documentation for more
-   details, including code snippets and references.
 
 ## Running locally
 
   The application uses the WebSphere Liberty profile runtime as its server,
   so you need to download and install the profile as part of the steps below.
 
-1. Copy the credentials from your `personality-insights-service-standard` service in Bluemix to
+1. Copy the credentials from your `personality-insights-service` service in Bluemix to
    `DemoServlet.java`. You can use the following command to see the
    credentials:
 
@@ -88,7 +85,7 @@ Give it a try! Click the button below to fork into IBM DevOps Services and deplo
             "username": "<username>"
           },
         "label": "personality-insights",
-        "name": "personality-insights-service-standard",
+        "name": "personality-insights-service",
         "plan": "IBM Watson Personality Insights Monthly Plan"
      }]
     }
@@ -169,7 +166,6 @@ Give it a try! Click the button below to fork into IBM DevOps Services and deplo
 
 [service_url]: http://www.ibm.com/smarterplanet/us/en/ibmwatson/developercloud/personality-insights.html
 [cloud_foundry]: https://github.com/cloudfoundry/cli
-[getting_started]: http://www.ibm.com/smarterplanet/us/en/ibmwatson/developercloud/doc/getting_started/
 [sign_up]: https://apps.admin.ibmcloud.com/manage/trial/bluemix.html?cm_mmc=WatsonDeveloperCloud-_-LandingSiteGetStarted-_-x-_-CreateAnAccountOnBluemixCLI
 [liberty]: https://developer.ibm.com/wasdev/downloads/
 [liberty_mac]: http://www.stormacq.com/how-to-install-websphere-8-5-liberty-profile-on-mac/
